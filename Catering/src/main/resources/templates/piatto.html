@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8" />
+		<link rel="stylesheet" href="/css/myStyle.css" />
+		<title>piatto</title>
+	</head>
+	
+	<body>
+	    <header></header>
+	<nav>
+			<a th:href="@{/}" >Home </a> |
+			<a href="/buffetAll" > Elenco buffet </a> |
+			<a th:href="@{/chefAll}" > Elenco chef</a>
+	</nav>
+	<section>
+	    <h4>Dettagli piatto</h4>
+	
+		<div th:if="${piatto}">
+			<span th:text="${piatto.nome}">nome</span>
+			<span th:text="${piatto.descrizione}">descrizione</span>
+		</div>
+		
+		<ul>
+	        <li th:each="ingrediente : ${ingredienti}">
+	          <a href="ingrediente.html" th:href="@{'/ingredienteAll' + '/' + ${ingrediente.id}}" th:text="${ingrediente.nome}">bello</a>
+	        </li>
+      	</ul>
+	    
+		<div th:unless="${piatto}">Non esiste</div>
+		
+		
+	    </section>
+	</body>
+</html>

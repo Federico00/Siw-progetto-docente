@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+	<head>
+		<meta charset="UTF-8" />
+		<title>Elenco ingrediente</title>
+		<link rel="stylesheet" href="/css/myStyle.css" />
+	</head>
+	
+	<body>
+	<header></header>
+	<nav>
+			<a th:href="@{/}" >Home </a> |
+			<a href="/buffetAll" > Elenco buffet </a> |
+			<a th:href="@{/chefAll}" > Elenco chef</a>
+	</nav>
+	<section> 
+		<div>
+			<h4>Elenco ingrediente:</h4>
+			<ul>
+				<li th:each="ingrediente : ${ingredienteAll}">
+					<a href="ingrediente.html" th:href="@{'/ingredienteAll' + '/' + ${ingrediente.id}}" th:text="${ingrediente.nome} + ' ' + ${ingrediente.descrizione}">prova</a>
+				</li>
+			</ul>
+		</div>
+		
+		</section> 
+		
+	</body>
+</html>

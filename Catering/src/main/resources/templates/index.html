@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+	
+	<link rel="stylesheet" href="/css/myStyle.css" />
+
+</head>
+<body>
+	<header></header>
+	<nav>
+			<a th:href="@{/}" >Home </a> |
+			<a href="/buffetAll" > Elenco buffet </a> |
+			<a th:href="@{/chefAll}" > Elenco chef</a>
+	</nav>
+	<section> 
+	<h4>Login</h4>
+	<form th:action="@{/login}" method="POST">
+		<div>
+			<div>
+				<div>Username:</div> <div><input name="username"
+					type="text" required /></div>
+			</div>
+			<div>
+				<div>Password:</div> <div><input name="password"
+					type="password" required /></div>
+			</div>
+			<div>
+				<span>
+					<button type="submit">Login</button>
+				</span>
+			</div>
+		</div>
+
+		<div>
+			<a th:href="@{/register}" >Registrati</a>
+		</div>
+	</form>
+</section>
+</body>
+</html>

@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="UTF-8" />
+	<link rel="stylesheet" href="/css/myStyle.css" />
+	<title>Catering</title>
+</head>
+<body>
+<header></header>
+	<nav>
+			<a th:href="@{/}" >Home </a> |
+			<a href="/buffetAll" > Elenco buffet </a> |
+			<a th:href="@{/chefAll}" > Elenco chef</a>
+	</nav>
+	<section> 
+    <div>
+    	<h4>Operazioni</h4>
+	</div>
+	
+	<div>
+		<a  th:href="@{/chefAll}">Elenco chef</a>
+	</div>
+
+	<div>
+		<a  th:href="@{/buffetAll}">Elenco Buffet</a>
+	</div>
+	
+	<div>
+		<a  th:href="@{/piattoAll}">Elenco Piatti</a>
+	</div>
+	
+	<div>
+		<a  th:href="@{/ingredienteAll}">Elenco Ingredienti</a>
+	</div>
+   </section> 
+</body>
+</html>

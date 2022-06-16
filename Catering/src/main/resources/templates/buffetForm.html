@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<html>
+	<head>
+		<meta charset="UTF-8" />
+		<title>Dettagli buffet</title>
+		<link rel="stylesheet" href="/css/myStyle.css" />
+	</head>
+	<body>
+		<header></header>
+		<nav>
+			<a th:href="@{/}" >Home </a> |
+			<a href="/buffetAll" > Elenco buffet </a> |
+			<a th:href="@{/chefAll}" > Elenco chef</a>
+		</nav>
+		<section> 
+			<h1>Aggiungi un buffet</h1>
+			<form th:action="@{/admin/buffet}" method="POST" th:object="${buffet}">
+				<div th:if="${#fields.hasGlobalErrors()}">
+					<p th:each="err : ${#fields.globalErrors()}" th:text="${err}">...</p> 
+				</div>
+				
+				<div>Nome:</div> 
+				<div><input type="text" th:field="*{nome}" /></div>
+				<div th:if="${#fields.hasErrors('nome')}" th:errors="*{nome}"></div>
+				
+				<div>Descrizione:</div>
+				<div><input type="text" th:field="*{descrizione}" /></div>
+				<div th:if="${#fields.hasErrors('descrizione')}" th:errors="*{descrizione}"></div>
+				
+				<div>
+					<ul>
+						<li th:each="chef : ${chefAll}">
+							<div>
+								<input type="radio" name="chef" th:value="${chef.id}" /> 
+								<label th:text="${chef.nome} "></label>
+							</div>
+						</li>
+					</ul>
+				</div>
+				
+				<div>
+					<span><button type="submit">Conferma</button></span>
+				</div>
+				
+			</form>
+		<section> 
+	</body>
+</html>

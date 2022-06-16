@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head >
+<link rel="stylesheet" href="/css/myStyle.css" />
+
+</head>
+<body>
+
+<header></header>
+	<nav>
+			<a th:href="@{/}" >Home </a> |
+			<a href="/buffetAll" > Elenco buffet </a> |
+			<a th:href="@{/chefAll}" > Elenco chef</a>
+	</nav>
+	<section> 
+
+	
+		<h1>Cancellazione buffet</h1>
+		
+			<h4 >Lista buffet</h4>
+			<form th:action="@{/admin/deletePiatto}" method="POST">
+				<ul>
+					<li th:each="piatto : ${piatti}">
+						<div>
+							<input type="radio" name="piatto"
+								th:value="${piatto.id}" /> <label
+								th:text="|${piatto.nome} ${piatto.descrizione}|"></label>
+						</div>
+
+					</li>
+				</ul>
+
+
+				<div>
+					<span><button type="submit">Cancel</button></span>
+				</div>
+
+</section>
+</body>
+</html>
