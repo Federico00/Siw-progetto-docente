@@ -8,7 +8,7 @@
 
 <header></header>
 	<nav>
-			<a th:href="@{/}" >Home </a> |
+			<a th:href="@{/default}" >Home </a> |
 			<a href="/buffetAll" > Elenco buffet </a> |
 			<a th:href="@{/chefAll}" > Elenco chef</a>
 	</nav>
@@ -17,14 +17,14 @@
 	
 		<h1>Cancellazione buffet</h1>
 		
-			<h4 >Lista buffet</h4>
+			<h4 >Lista piatti</h4>
 			<form th:action="@{/admin/deletePiatto}" method="POST">
 				<ul>
-					<li th:each="piatto : ${piatti}">
+					<li th:each="piatto : ${piattoAll}">
 						<div>
 							<input type="radio" name="piatto"
 								th:value="${piatto.id}" /> <label
-								th:text="|${piatto.nome} ${piatto.descrizione}|"></label>
+								th:text="${piatto.nome}"></label>
 						</div>
 
 					</li>

@@ -7,10 +7,14 @@ import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.ManyToOne;
 import javax.persistence.OneToMany;
 
+import com.example.catering.model.Chef;
+import com.example.catering.model.Piatto;
+
 @Entity
-public class Piatto {
+public class Buffet {
 	
 	@Id
 	@GeneratedValue(strategy=GenerationType.AUTO)
@@ -19,10 +23,13 @@ public class Piatto {
 	private String nome;
 
 	private String descrizione;
-	
-	@OneToMany(cascade = {CascadeType.PERSIST, CascadeType.REMOVE })
-	private List<Ingrediente> ingredienti;
 
+	@ManyToOne
+	private Chef chef;
+	
+	@OneToMany(mappedBy = "buffet", cascade = {CascadeType.PERSIST, CascadeType.REMOVE })
+	private List<Piatto> piatti;
+	
 	public Long getId() {
 		return id;
 	}
@@ -47,13 +54,21 @@ public class Piatto {
 		this.descrizione = descrizione;
 	}
 
-	public List<Ingrediente> getIngredienti() {
-		return ingredienti;
+	public Chef getChef() {
+		return chef;
 	}
 
-	public void setIngredienti(List<Ingrediente> ingredienti) {
-		this.ingredienti = ingredienti;
+	public void setChef(Chef chef) {
+		this.chef = chef;
 	}
 
+	public List<Piatto> getPiatti() {
+		return piatti;
+	}
+
+	public void setPiatti(List<Piatto> piatti) {
+		this.piatti = piatti;
+	}
+	
 	
 }

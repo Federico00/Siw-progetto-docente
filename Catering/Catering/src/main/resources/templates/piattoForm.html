@@ -3,19 +3,19 @@
 <html>
 <head>
 <meta charset="UTF-8" />
-<title>Aggiungi ingrediente</title>
+<title>Aggiungi piatto</title>
 <link rel="stylesheet" href="/css/myStyle.css" />
 </head>
 <body>
-<header></header>
+ <header></header>
 	<nav>
-			<a th:href="@{/}" >Home </a> |
+			<a th:href="@{/default}" >Home </a> |
 			<a href="/buffetAll" > Elenco buffet </a> |
 			<a th:href="@{/chefAll}" > Elenco chef</a>
 	</nav>
-	<section> 
-<h4>Aggiungi un ingrediente</h4>
-	<form th:action="@{/admin/ingrediente}" method="POST" th:object="${ingrediente}">
+	<section>
+<h4>Aggiungi un piatto</h4>
+	<form th:action="@{/admin/piatto}" method="POST" th:object="${piatto}">
 		<div th:if="${#fields.hasGlobalErrors()}">
 			<p th:each="err : ${#fields.globalErrors()}" th:text="${err}">...</p> 
 		</div>
@@ -31,17 +31,12 @@
 		</div> 
 		
 		<div>
-			<span>Origine:</span><span><input type="text" th:field="*{Origine}" /></span>
-			<span th:if="${#fields.hasErrors('Origine')}" th:errors="*{Origine}"></span>
-		</div> 
-		
-		<div>
 			
 			<ul>
-				<li th:each="piatto : ${piattoAll}">
+				<li th:each="buffet : ${buffetAll}">
 					<div>
-						<input type="radio" name="piatto" th:value="${piatto.id}" /> 
-						<label th:text="${piatto.nome} "></label>
+						<input type="radio" name="buffet" th:value="${buffet.id}" /> 
+						<label th:text="${buffet.nome} "></label>
 					</div>
 				</li>
 			</ul>
@@ -52,5 +47,5 @@
 		</div>
 		
 	</form>
-	</section> 
+	</section>
 </body>
